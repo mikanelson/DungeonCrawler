@@ -34,4 +34,8 @@ public class DungeonRun {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public String toString() {
+        return "{Character: " + playerName + ", Score: " + score + ", Date: " + date + "}";
+    }
 }

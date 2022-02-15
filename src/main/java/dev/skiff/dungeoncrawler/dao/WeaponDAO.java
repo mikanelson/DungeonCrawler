@@ -13,8 +13,8 @@ public class WeaponDAO {
     public ArrayList getAllWeapons() throws SQLException {
         ArrayList allWeapons = new ArrayList();
         Statement statement = conn.createStatement();
-        ResultSet rs = statement.executeQuery("Select * From Weapons");
-        while(rs.next()){
+        ResultSet rs = statement.executeQuery("SELECT * FROM weapons");
+        while(rs.next()) {
             Weapon nextWeapon = new Weapon(rs.getString("name"), rs.getInt("damage"),
                     rs.getString("weapon_type"));
             allWeapons.add(nextWeapon);

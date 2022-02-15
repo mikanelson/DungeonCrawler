@@ -63,9 +63,9 @@ public class ArrayList {
 
     public String toString() {
         StringBuilder arrayString = new StringBuilder();
-        for (Object obj: objectArray) {
-            if (obj != null) {
-                arrayString.append(obj);
+        for (int i = 0; i < arrayItems; i++) {
+            arrayString.append(objectArray[i]);
+            if (i != arrayItems - 1) {
                 arrayString.append("\n");
             }
         }

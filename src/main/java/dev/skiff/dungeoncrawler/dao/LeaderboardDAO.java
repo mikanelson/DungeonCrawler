@@ -13,10 +13,10 @@ public class LeaderboardDAO {
     public ArrayList getLeaderboard() throws SQLException {
         ArrayList allRuns = new ArrayList();
         Statement statement = conn.createStatement();
-        ResultSet rs = statement.executeQuery("Select * From Weapons");
+        ResultSet rs = statement.executeQuery("SELECT * FROM leaderboards");
         while(rs.next()){
-            DungeonRun nextRun = new DungeonRun(rs.getString("name"), rs.getInt("damage"),
-                    rs.getString("weapon_type"));
+            DungeonRun nextRun = new DungeonRun(rs.getString("player_name"), rs.getInt("score"),
+                    rs.getDate("run_date").toString());
             allRuns.add(nextRun);
         }
         rs.close();
