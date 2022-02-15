@@ -6,3 +6,5 @@
 *.iws
 log/
 target/
+/src/main/java/dev/skiff/dungeoncrawler/util/db.properties
+/dbsetup.sql

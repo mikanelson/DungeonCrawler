@@ -64,7 +64,10 @@ public class ArrayList {
     public String toString() {
         StringBuilder arrayString = new StringBuilder();
         for (Object obj: objectArray) {
-            arrayString.append(obj.toString());
+            if (obj != null) {
+                arrayString.append(obj);
+                arrayString.append("\n");
+            }
         }
         return arrayString.toString();
     }
