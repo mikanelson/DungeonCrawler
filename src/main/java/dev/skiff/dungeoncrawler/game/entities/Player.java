@@ -23,6 +23,5 @@ public class Player extends Entity {
     public void setName(Scanner s) {
         System.out.println("Greetings, traveller. What is your name?");
         this.name = s.nextLine();
-        s.close();
     }
 }
