@@ -14,7 +14,7 @@ public class WeaponDAO {
         ArrayList allWeapons = new ArrayList();
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM weapons");
-        while(rs.next()) {
+        while (rs.next()) {
             Weapon nextWeapon = new Weapon(rs.getString("name"), rs.getInt("damage"),
                     rs.getString("weapon_type"));
             allWeapons.add(nextWeapon);

@@ -14,12 +14,25 @@ public class LeaderboardDAO {
         ArrayList allRuns = new ArrayList();
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM leaderboards");
-        while(rs.next()){
+        while (rs.next()) {
             DungeonRun nextRun = new DungeonRun(rs.getString("player_name"), rs.getInt("score"),
                     rs.getDate("run_date").toString());
             allRuns.add(nextRun);
         }
         rs.close();
         return allRuns;
+    }
+
+    public ArrayList getLeaderboardTop(int number) throws SQLException {
+        ArrayList topList = new ArrayList();
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT TOP(" + number + ") * FROM leaderboards ORDER BY score desc");
+        while (rs.next()) {
+            DungeonRun nextRun = new DungeonRun(rs.getString("player_name"), rs.getInt("score"),
+                    rs.getDate("run_date").toString());
+            topList.add(nextRun);
+        }
+        rs.close();
+        return topList;
     }
 }

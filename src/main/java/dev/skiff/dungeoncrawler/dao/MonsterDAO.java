@@ -1,6 +1,5 @@
 package dev.skiff.dungeoncrawler.dao;
 
-import dev.skiff.dungeoncrawler.model.DungeonRun;
 import dev.skiff.dungeoncrawler.model.Monster;
 import dev.skiff.dungeoncrawler.util.ArrayList;
 
@@ -15,7 +14,7 @@ public class MonsterDAO {
         ArrayList allMonsters = new ArrayList();
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM monsters");
-        while(rs.next()) {
+        while (rs.next()) {
             Monster nextMonster = new Monster(rs.getString("monster_species"), rs.getInt("damage"),
                     rs.getInt("health"));
             allMonsters.add(nextMonster);
