@@ -20,10 +20,9 @@ public class Player extends Entity {
         }
     }
 
-    public void setName() {
-        Scanner in = new Scanner(System.in);
+    public void setName(Scanner s) {
         System.out.println("Greetings, traveller. What is your name?");
-        this.name = in.nextLine();
-        in.close();
+        this.name = s.nextLine();
+        s.close();
     }
 }
