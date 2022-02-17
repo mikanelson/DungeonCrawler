@@ -13,20 +13,8 @@ public class Monster {
         this.health = health;
     }
 
-    public String getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
-    }
-
     public int getDamage() {
         return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
     }
 
     public int getHealth() {
@@ -37,6 +25,9 @@ public class Monster {
         this.health -= damage;
         System.out.println("You deal " + damage + " damage to the " + this.species +
                     ". Its health is " + this.health + ".");
+        if (health <= 0) {
+            Controller.getInstance().incrementScore();
+        }
     }
 
     public String toString() {

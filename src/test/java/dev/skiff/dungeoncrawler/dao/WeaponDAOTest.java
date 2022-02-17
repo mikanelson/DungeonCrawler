@@ -11,6 +11,6 @@ public class WeaponDAOTest {
     public void canGetAllWeapons() throws SQLException {
         WeaponDAO testDAO = new WeaponDAO();
         ArrayList weaponList = testDAO.getAllWeapons();
-        assertEquals(weaponList.getArrayItems(), 2);
+        assertEquals(weaponList.getArrayItems(), 3);
     }
 }

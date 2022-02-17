@@ -8,6 +8,10 @@ public class DungeonCrawler {
     public static Connection conn = DBConnectionUtil.getConnection();
     private static Controller controller = Controller.getInstance();
     public static void main(String[] args) {
+        runGame();
+    }
+
+    public static void runGame() {
         printTitle();
         controller.setUp();
         controller.fight();

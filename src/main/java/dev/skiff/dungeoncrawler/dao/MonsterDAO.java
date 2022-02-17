@@ -22,4 +22,16 @@ public class MonsterDAO {
         rs.close();
         return allMonsters;
     }
+
+    public Monster getRandomMonster() throws SQLException {
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT TOP(1) * FROM monsters ORDER BY CHECKSUM(NEWID())");
+        Monster monster = null;
+        while (rs.next()) {
+            monster = new Monster(rs.getString("monster_species"), rs.getInt("damage"),
+                    rs.getInt("health"));
+        }
+        rs.close();
+        return monster;
+    }
 }

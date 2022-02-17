@@ -1,5 +1,6 @@
 package dev.skiff.dungeoncrawler.game;
 
+import dev.skiff.dungeoncrawler.dao.LeaderboardDAO;
 import dev.skiff.dungeoncrawler.dao.MonsterDAO;
 import dev.skiff.dungeoncrawler.dao.WeaponDAO;
 import dev.skiff.dungeoncrawler.game.entities.Player;
@@ -8,13 +9,15 @@ import dev.skiff.dungeoncrawler.model.Weapon;
 import dev.skiff.dungeoncrawler.util.ArrayList;
 
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
+
+import static dev.skiff.dungeoncrawler.game.DungeonCrawler.runGame;
 
 public class Controller {
     private int score;
     private ArrayList allWeapons;
-    private ArrayList allMonsters;
     private Player p;
     private static Controller instance;
     private Scanner s;
@@ -27,20 +30,8 @@ public class Controller {
         return instance;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public Player getPlayer() {
-        return this.p;
-    }
-
-    public void setPlayer(Player p) {
-        this.p = p;
+    public void incrementScore() {
+        this.score++;
     }
 
     private Controller() {
@@ -50,18 +41,45 @@ public class Controller {
         rng = new Random();
         try {
             allWeapons = new WeaponDAO().getAllWeapons();
-            allMonsters = new MonsterDAO().getAllMonsters();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void gameOver() {
-        //TODO Update this to look nicer and have more functionality
+        //TODO Update this to look nicer
         System.out.println("You died.");
+        LeaderboardDAO lDAO = new LeaderboardDAO();
+        try {
+            lDAO.addRunToLeaderboard(p.getName(), this.score);
+            ArrayList topRuns = lDAO.getLeaderboardTop(10);
+            System.out.println("LEADERBOARD:");
+            for (int i = 0; i < topRuns.getArrayItems(); i++) {
+                System.out.println(topRuns.get(i));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Play again?");
+        ArrayList validChoices = new ArrayList();
+        validChoices.add("y");
+        validChoices.add("yes");
+        validChoices.add("no");
+        validChoices.add("n");
+        String choice;
+        do {
+            choice = s.next().toLowerCase();
+        } while (!validChoices.contains(choice));
+        if (choice.equals("n") || choice.equals("no")) {
+            System.out.println("Thank you for playing.");
+            System.exit(0);
+        } else {
+            runGame();
+        }
     }
 
     public void setUp() {
+        p = new Player();
         p.setName(s);
         chooseWeapon(generateWeaponChoices(), s);
     }
@@ -98,12 +116,17 @@ public class Controller {
     }
 
     public void fight() {
-        Monster enemy = (Monster) allMonsters.get(new Random().nextInt(allMonsters.getArrayItems()));
-        int enemyDamage = enemy.getDamage();
-        int pDamage = p.getDamage();
-        while (p.getHealth() > 0 && enemy.getHealth() > 0) {
-            enemy.takeDamage(pDamage);
-            p.takeDamage(enemyDamage);
+        Monster enemy = null;
+        try {
+            enemy = new MonsterDAO().getRandomMonster();
+            int enemyDamage = enemy.getDamage();
+            int pDamage = p.getDamage();
+            while (p.getHealth() > 0 && enemy.getHealth() > 0) {
+                enemy.takeDamage(pDamage);
+                p.takeDamage(enemyDamage);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
