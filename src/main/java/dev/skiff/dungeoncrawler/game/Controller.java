@@ -47,8 +47,7 @@ public class Controller {
     }
 
     public void gameOver() {
-        //TODO Update this to look nicer
-        System.out.println("You died.");
+        printDeath();
         LeaderboardDAO lDAO = new LeaderboardDAO();
         try {
             lDAO.addRunToLeaderboard(p.getName(), this.score);
@@ -127,5 +126,16 @@ public class Controller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void printDeath() {
+        System.out.println(" __     __ ____   _    _   _____  _____  ______  _____   _ \n" +
+                " \\ \\   / // __ \\ | |  | | |  __ \\|_   _||  ____||  __ \\ | |\n" +
+                "  \\ \\_/ /| |  | || |  | | | |  | | | |  | |__   | |  | || |\n" +
+                "   \\   / | |  | || |  | | | |  | | | |  |  __|  | |  | || |\n" +
+                "    | |  | |__| || |__| | | |__| |_| |_ | |____ | |__| ||_|\n" +
+                "    |_|   \\____/  \\____/  |_____/|_____||______||_____/ (_)\n" +
+                "                                                           \n" +
+                "                                                           ");
     }
 }
