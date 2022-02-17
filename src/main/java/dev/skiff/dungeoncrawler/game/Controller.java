@@ -9,7 +9,6 @@ import dev.skiff.dungeoncrawler.model.Weapon;
 import dev.skiff.dungeoncrawler.util.ArrayList;
 
 import java.sql.SQLException;
-import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
