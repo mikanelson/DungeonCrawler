@@ -33,9 +33,11 @@ public class Player extends Entity {
         String name;
         do {
             name = s.next();
+            System.out.println(name);
             if (name.length() > 20) {
                 System.out.println("That's quite the name, adventurer. Is there anything shorter that I may call you?");
             }
         } while (name.length() > 20);
+        this.name = name;
     }
 }
