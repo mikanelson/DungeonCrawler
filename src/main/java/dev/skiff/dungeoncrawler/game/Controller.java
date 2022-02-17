@@ -116,9 +116,8 @@ public class Controller {
     }
 
     public void fight() {
-        Monster enemy = null;
         try {
-            enemy = new MonsterDAO().getRandomMonster();
+            Monster enemy = new MonsterDAO().getRandomMonster();
             int enemyDamage = enemy.getDamage();
             int pDamage = p.getDamage();
             while (p.getHealth() > 0 && enemy.getHealth() > 0) {
