@@ -4,6 +4,7 @@ import dev.skiff.dungeoncrawler.dao.LeaderboardDAO;
 import dev.skiff.dungeoncrawler.dao.MonsterDAO;
 import dev.skiff.dungeoncrawler.dao.WeaponDAO;
 import dev.skiff.dungeoncrawler.game.entities.Player;
+import dev.skiff.dungeoncrawler.model.DungeonRun;
 import dev.skiff.dungeoncrawler.model.Monster;
 import dev.skiff.dungeoncrawler.model.Weapon;
 import dev.skiff.dungeoncrawler.util.ArrayList;
@@ -53,7 +54,9 @@ public class Controller {
             ArrayList topRuns = lDAO.getLeaderboardTop(10);
             System.out.println("LEADERBOARD:");
             for (int i = 0; i < topRuns.getArrayItems(); i++) {
-                System.out.println(topRuns.get(i));
+                DungeonRun run = (DungeonRun) topRuns.get(i);
+                String format = "|%1$-20s|%2$-4s|%3$-10s|\n";
+                System.out.format(format, run.getPlayerName(), run.getScore(), run.getDate());
             }
         } catch (SQLException e) {
             e.printStackTrace();

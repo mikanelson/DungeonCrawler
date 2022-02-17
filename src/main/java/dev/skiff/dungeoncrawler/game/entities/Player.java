@@ -30,6 +30,12 @@ public class Player extends Entity {
 
     public void setName(Scanner s) {
         System.out.println("Greetings, traveller. What is your name?");
-        this.name = s.nextLine();
+        String name;
+        do {
+            name = s.next();
+            if (name.length() > 20) {
+                System.out.println("That's quite the name, adventurer. Is there anything shorter that I may call you?");
+            }
+        } while (name.length() > 20);
     }
 }

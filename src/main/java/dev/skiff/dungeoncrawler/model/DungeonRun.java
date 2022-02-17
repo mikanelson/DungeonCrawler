@@ -11,6 +11,18 @@ public class DungeonRun {
         this.date = date;
     }
 
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
     public String toString() {
         return "{Character: " + playerName + ", Score: " + score + ", Date: " + date + "}";
     }
