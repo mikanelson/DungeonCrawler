@@ -1,5 +1,7 @@
 package dev.skiff.dungeoncrawler.model;
 
+import dev.skiff.dungeoncrawler.game.Controller;
+
 public class Monster {
     private String species;
     private int damage;
@@ -31,8 +33,10 @@ public class Monster {
         return health;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public void takeDamage(int damage) {
+        this.health -= damage;
+        System.out.println("You deal " + damage + " damage to the " + this.species +
+                    ". Its health is " + this.health + ".");
     }
 
     public String toString() {

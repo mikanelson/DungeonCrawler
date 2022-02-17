@@ -43,10 +43,8 @@ public class LeaderboardDAO {
         int parameterIndex = 0;
         statement.setInt(++parameterIndex, score);
         statement.setString(++parameterIndex, playerName);
-        DateFormat dtf = new SimpleDateFormat("yyyyMMdd");
-        LocalDateTime now = LocalDateTime.now();
-        String date = now.toString();
-        statement.setString(++parameterIndex, date.substring(0,10));
+        String now = LocalDateTime.now().toString();
+        statement.setString(++parameterIndex, now.substring(0,10));
         statement.executeUpdate();
     }
 }

@@ -10,6 +10,10 @@ public class Player extends Entity {
         super(name, damage, hp);
     }
 
+    public Player() {
+        super("Adventurer", 1, 10);
+    }
+
     @Override
     public void takeDamage(int damage) {
         this.health -= damage;
@@ -18,6 +22,10 @@ public class Player extends Entity {
         } else {
             System.out.println("You take " + damage + " damage. Your health is " + this.health + ".");
         }
+    }
+
+    public int getHealth() {
+        return this.health;
     }
 
     public void setName(Scanner s) {
