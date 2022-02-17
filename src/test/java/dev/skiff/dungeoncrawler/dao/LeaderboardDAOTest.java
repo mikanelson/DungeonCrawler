@@ -20,7 +20,7 @@ public class LeaderboardDAOTest {
     @Test
     public void canGetAllRuns() throws SQLException {
         runList = testDAO.getLeaderboard();
-        assertEquals(runList.getArrayItems(), 2);
+        assertEquals(runList.getArrayItems(), 5);
     }
 
     @Test

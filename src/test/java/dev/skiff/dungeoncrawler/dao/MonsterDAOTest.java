@@ -12,6 +12,6 @@ public class MonsterDAOTest {
     public void canGetAllMonsters() throws SQLException {
         MonsterDAO testDAO = new MonsterDAO();
         ArrayList monsterList = testDAO.getAllMonsters();
-        assertEquals(monsterList.getArrayItems(), 1);
+        assertEquals(monsterList.getArrayItems(), 2);
     }
 }
