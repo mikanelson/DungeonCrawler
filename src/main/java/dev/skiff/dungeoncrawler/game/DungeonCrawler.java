@@ -1,6 +1,5 @@
 package dev.skiff.dungeoncrawler.game;
 
-import dev.skiff.dungeoncrawler.game.entities.Player;
 import dev.skiff.dungeoncrawler.util.DBConnectionUtil;
 
 import java.sql.Connection;

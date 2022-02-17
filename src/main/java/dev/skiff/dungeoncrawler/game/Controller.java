@@ -63,9 +63,10 @@ public class Controller {
 
     public void setUp() {
         p.setName(s);
+        chooseWeapon(generateWeaponChoices(), s);
     }
 
-    public void generateWeaponChoices() {
+    public ArrayList generateWeaponChoices() {
         int wLength = allWeapons.getArrayItems();
         ArrayList temp = new ArrayList();
         while (temp.getArrayItems() < 3) {
@@ -74,6 +75,26 @@ public class Controller {
                 temp.add(w);
             }
         }
+        return temp;
+    }
+
+    public void chooseWeapon(ArrayList weapons, Scanner s) {
+        System.out.println("Which weapon would you like?");
+        int totalWeapons = weapons.getArrayItems();
+        for (int i = 0; i < totalWeapons; i++) {
+            System.out.println((i + 1) + ": " + weapons.get(i));
+        }
+        int choice;
+        do {
+            while (!s.hasNextInt()) {
+                s.next();
+            }
+            choice = s.nextInt();
+        } while (choice > totalWeapons || choice <= 0);
+        Weapon chosen = (Weapon) weapons.get(choice - 1);
+        int damage = chosen.getDamage();
+        p.setDamage(damage);
+        System.out.println("You equip the " + chosen.getName() + ". Your damage is now " + damage + ".");
     }
 
     public void fight() {
