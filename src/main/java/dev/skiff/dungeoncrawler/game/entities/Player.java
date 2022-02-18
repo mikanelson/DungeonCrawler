@@ -28,12 +28,16 @@ public class Player extends Entity {
         return this.health;
     }
 
+    public void heal(int toHeal) {
+        this.health += toHeal;
+        System.out.println("You have been healed by " + toHeal + ". Your health is now: " + this.health);
+    }
+
     public void setName(Scanner s) {
         System.out.println("Greetings, traveller. What is your name?");
         String name;
         do {
             name = s.next();
-            System.out.println(name);
             if (name.length() > 20) {
                 System.out.println("That's quite the name, adventurer. Is there anything shorter that I may call you?");
             }

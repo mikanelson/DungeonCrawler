@@ -128,6 +128,35 @@ public class Controller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        getRoomChoice(s);
+    }
+
+    public void getRoomChoice(Scanner s) {
+        System.out.println("What would you like to do next?");
+        System.out.println("1. Heal");
+        System.out.println("2. Fight");
+        System.out.println("3. New Weapon");
+        int choice;
+        do {
+            while (!s.hasNextInt()) {
+                s.next();
+            }
+            choice = s.nextInt();
+        } while (choice > 3 || choice <= 0);
+        switch (choice) {
+            case 1:
+                p.heal(rng.nextInt(20));
+                fight();
+                break;
+            case 2:
+                fight();
+                break;
+            case 3:
+                chooseWeapon(generateWeaponChoices(), s);
+                fight();
+            default:
+                fight();
+        }
     }
 
     private void printDeath() {
