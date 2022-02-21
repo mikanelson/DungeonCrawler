@@ -18,9 +18,9 @@ public class PlayerTest {
 
     @Test
     public void canTakeDamage() {
-        assertEquals(testPlayer.health, 10);
+        assertEquals(testPlayer.getHealth(), 10);
         testPlayer.takeDamage(5);
-        assertEquals(testPlayer.health, 5);
+        assertEquals(testPlayer.getHealth(), 5);
     }
 
     @Test
