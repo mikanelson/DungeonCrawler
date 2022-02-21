@@ -54,11 +54,11 @@ public class MonsterDAO {
         int monsterHealth = 20;
         if (monsterJSON != null) {
             request = APIRequestUtil.getAPIJson(baseURL + monsterJSON.get("index"));
-            monsterName = monsterJSON.get("index") + "";
+            monsterName = monsterJSON.get("name") + "";
             try {
                 monsterJSON = APIRequestUtil.parseJSONString(request);
                 float tempDamage = Float.parseFloat("" + monsterJSON.get("challenge_rating"));
-                monsterDamage = Math.round(tempDamage);
+                monsterDamage = Math.max(1, Math.round(tempDamage * 0.5f));
                 monsterHealth = Integer.parseInt("" + monsterJSON.get("hit_points"));
             } catch (ParseException e) {
                 e.printStackTrace();
