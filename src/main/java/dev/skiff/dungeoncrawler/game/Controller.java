@@ -9,6 +9,7 @@ import dev.skiff.dungeoncrawler.model.Monster;
 import dev.skiff.dungeoncrawler.model.Weapon;
 import dev.skiff.dungeoncrawler.util.ArrayList;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Random;
 import java.util.Scanner;
@@ -118,14 +119,14 @@ public class Controller {
 
     public void fight() {
         try {
-            Monster enemy = new MonsterDAO().getRandomMonster();
+            Monster enemy = new MonsterDAO().getRandomAPIMonster();
             int enemyDamage = enemy.getDamage();
             int pDamage = p.getDamage();
             while (p.getHealth() > 0 && enemy.getHealth() > 0) {
                 enemy.takeDamage(pDamage);
                 p.takeDamage(enemyDamage);
             }
-        } catch (SQLException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         getRoomChoice(s);

@@ -11,7 +11,7 @@ public class Player extends Entity {
     }
 
     public Player() {
-        super("Adventurer", 1, 10);
+        super("Adventurer", 1, 100);
     }
 
     @Override

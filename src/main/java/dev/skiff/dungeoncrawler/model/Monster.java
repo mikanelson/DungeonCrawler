@@ -23,11 +23,13 @@ public class Monster {
 
     public void takeDamage(int damage) {
         this.health -= damage;
-        System.out.println("You deal " + damage + " damage to the " + this.species +
-                    ". Its health is " + this.health + ".");
         if (health <= 0) {
             Controller.getInstance().incrementScore();
+            this.health = 0;
         }
+        System.out.println("You deal " + damage + " damage to the " + this.species +
+                    ". Its health is " + this.health + ".");
+
     }
 
     public String toString() {

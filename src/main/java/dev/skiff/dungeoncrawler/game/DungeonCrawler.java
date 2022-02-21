@@ -1,7 +1,9 @@
 package dev.skiff.dungeoncrawler.game;
 
+import dev.skiff.dungeoncrawler.dao.MonsterDAO;
 import dev.skiff.dungeoncrawler.util.DBConnectionUtil;
 
+import java.io.IOException;
 import java.sql.Connection;
 
 public class DungeonCrawler {
