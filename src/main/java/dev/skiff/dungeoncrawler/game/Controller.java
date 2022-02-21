@@ -48,6 +48,7 @@ public class Controller {
     }
 
     public void gameOver() {
+        DungeonCrawler.log.info("Game over.");
         printDeath();
         LeaderboardDAO lDAO = new LeaderboardDAO();
         try {
@@ -59,8 +60,10 @@ public class Controller {
                 String format = "|%1$-20s|%2$-4s|%3$-10s|\n";
                 System.out.format(format, run.getPlayerName(), run.getScore(), run.getDate());
             }
+            DungeonCrawler.log.info("Player added to leaderboards.");
         } catch (SQLException e) {
             e.printStackTrace();
+            DungeonCrawler.log.error("Error adding user to leaderboards.", e);
         }
         System.out.println("Play again?");
         ArrayList validChoices = new ArrayList();
@@ -74,6 +77,7 @@ public class Controller {
         } while (!validChoices.contains(choice));
         if (choice.equals("n") || choice.equals("no")) {
             System.out.println("Thank you for playing.");
+            DungeonCrawler.log.info("Player quit game.");
             System.exit(0);
         } else {
             runGame();
@@ -87,6 +91,7 @@ public class Controller {
     }
 
     public ArrayList generateWeaponChoices() {
+        DungeonCrawler.log.info("Generating weapon choices.");
         int wLength = allWeapons.getArrayItems();
         ArrayList temp = new ArrayList();
         while (temp.getArrayItems() < 3) {
@@ -114,6 +119,7 @@ public class Controller {
         Weapon chosen = (Weapon) weapons.get(choice - 1);
         int damage = chosen.getDamage();
         p.setDamage(damage);
+        DungeonCrawler.log.info("Equipping " + chosen.getName() + " to player.");
         System.out.println("You equip the " + chosen.getName() + ". Your damage is now " + damage + ".");
     }
 
@@ -122,12 +128,14 @@ public class Controller {
             Monster enemy = new MonsterDAO().getRandomAPIMonster();
             int enemyDamage = enemy.getDamage();
             int pDamage = p.getDamage();
+            DungeonCrawler.log.info("Fight start with " + enemy.getSpecies());
             while (p.getHealth() > 0 && enemy.getHealth() > 0) {
                 enemy.takeDamage(pDamage);
                 p.takeDamage(enemyDamage);
             }
         } catch (IOException e) {
             e.printStackTrace();
+            DungeonCrawler.log.error("Error while fighting.", e);
         }
         getRoomChoice(s);
     }
@@ -144,6 +152,7 @@ public class Controller {
             }
             choice = s.nextInt();
         } while (choice > 3 || choice <= 0);
+        DungeonCrawler.log.info("Player choice: " + choice);
         switch (choice) {
             case 1:
                 p.heal(rng.nextInt(20));

@@ -1,15 +1,16 @@
 package dev.skiff.dungeoncrawler.game;
 
-import dev.skiff.dungeoncrawler.dao.MonsterDAO;
 import dev.skiff.dungeoncrawler.util.DBConnectionUtil;
+import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.sql.Connection;
 
 public class DungeonCrawler {
     public static Connection conn = DBConnectionUtil.getConnection();
     private static Controller controller = Controller.getInstance();
+    public static final Logger log = Logger.getLogger(DungeonCrawler.class);
     public static void main(String[] args) {
+        log.info("Game start.");
         runGame();
     }
 

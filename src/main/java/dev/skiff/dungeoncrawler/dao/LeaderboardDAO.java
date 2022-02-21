@@ -4,8 +4,6 @@ import dev.skiff.dungeoncrawler.model.DungeonRun;
 import dev.skiff.dungeoncrawler.util.ArrayList;
 
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 
 import static dev.skiff.dungeoncrawler.game.DungeonCrawler.conn;

@@ -13,6 +13,10 @@ public class Monster {
         this.health = health;
     }
 
+    public String getSpecies() {
+        return species;
+    }
+
     public int getDamage() {
         return damage;
     }

@@ -4,7 +4,6 @@ import dev.skiff.dungeoncrawler.model.Monster;
 import dev.skiff.dungeoncrawler.util.APIRequestUtil;
 import dev.skiff.dungeoncrawler.util.ArrayList;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -26,18 +25,6 @@ public class MonsterDAO {
         }
         rs.close();
         return allMonsters;
-    }
-
-    public Monster getRandomMonster() throws SQLException {
-        Statement statement = conn.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT TOP(1) * FROM monsters ORDER BY CHECKSUM(NEWID())");
-        Monster monster = null;
-        while (rs.next()) {
-            monster = new Monster(rs.getString("monster_species"), rs.getInt("damage"),
-                    rs.getInt("health"));
-        }
-        rs.close();
-        return monster;
     }
 
     public Monster getRandomAPIMonster() throws IOException {
