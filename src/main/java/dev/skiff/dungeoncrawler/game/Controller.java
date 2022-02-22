@@ -155,7 +155,7 @@ public class Controller {
         DungeonCrawler.log.info("Player choice: " + choice);
         switch (choice) {
             case 1:
-                p.heal(rng.nextInt(20));
+                p.heal(Math.min(rng.nextInt(100), 15));
                 fight();
                 break;
             case 2:
