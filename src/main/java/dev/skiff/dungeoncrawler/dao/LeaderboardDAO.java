@@ -1,4 +1,4 @@
-package dev.skiff.dungeoncrawler.game.dao;
+package dev.skiff.dungeoncrawler.dao;
 
 import dev.skiff.dungeoncrawler.model.DungeonRun;
 import dev.skiff.dungeoncrawler.util.ArrayList;

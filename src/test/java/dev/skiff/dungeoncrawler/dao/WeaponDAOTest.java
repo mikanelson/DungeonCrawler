@@ -1,6 +1,6 @@
-package dev.skiff.dungeoncrawler.game.dao;
+package dev.skiff.dungeoncrawler.dao;
 
-import dev.skiff.dungeoncrawler.game.dao.WeaponDAO;
+import dev.skiff.dungeoncrawler.dao.WeaponDAO;
 import dev.skiff.dungeoncrawler.model.Weapon;
 import dev.skiff.dungeoncrawler.util.ArrayList;
 import org.junit.jupiter.api.Test;

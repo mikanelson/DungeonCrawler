@@ -1,8 +1,8 @@
 package dev.skiff.dungeoncrawler.game;
 
-import dev.skiff.dungeoncrawler.game.dao.LeaderboardDAO;
-import dev.skiff.dungeoncrawler.game.dao.MonsterDAO;
-import dev.skiff.dungeoncrawler.game.dao.WeaponDAO;
+import dev.skiff.dungeoncrawler.dao.LeaderboardDAO;
+import dev.skiff.dungeoncrawler.dao.MonsterDAO;
+import dev.skiff.dungeoncrawler.dao.WeaponDAO;
 import dev.skiff.dungeoncrawler.game.entities.Player;
 import dev.skiff.dungeoncrawler.model.DungeonRun;
 import dev.skiff.dungeoncrawler.model.Monster;
