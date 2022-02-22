@@ -1,7 +1,7 @@
 package dev.skiff.dungeoncrawler.util;
 
 public class ArrayList {
-    private static final int INITIAL_ARRAY_SIZE = 128;
+    public static final int INITIAL_ARRAY_SIZE = 128;
     private Object[] objectArray;
     private int arrayItems = 0;
 

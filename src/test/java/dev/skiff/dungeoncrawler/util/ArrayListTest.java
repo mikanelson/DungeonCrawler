@@ -3,8 +3,7 @@ package dev.skiff.dungeoncrawler.util;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayListTest {
     ArrayList a1;
@@ -32,9 +31,29 @@ public class ArrayListTest {
     }
 
     @Test
+    public void toStringWorks() {
+        String test = null;
+        a1.fillArray();
+        test = a1.toString();
+        assertNotNull(test);
+    }
+
+    @Test
+    public void arrayCanExpand() {
+        a1.fillArray();
+        a1.add(10);
+        assertTrue(a1.getArrayItems() > ArrayList.INITIAL_ARRAY_SIZE);
+    }
+
+    @Test
     public void containsSingleItem() {
         a1.add(100);
-        a1.contains(100);
+        assertTrue(a1.contains(100));
+    }
+
+    @Test
+    public void doesNotContainItem() {
+        assertFalse(a1.contains(100));
     }
 
     @Test
@@ -62,6 +81,14 @@ public class ArrayListTest {
     public void twoArraysAreNotEqualDifferentSizes() {
         a1.fillArray();
         a3.fillArray();
+        assertFalse(a1.equals(a2));
+    }
+
+    @Test
+    public void twoArraysAreNotEqualDifferentItems() {
+        a1.fillArray();
+        a2.fillArray();
+        a1.set(0, 10);
         assertFalse(a1.equals(a2));
     }
 

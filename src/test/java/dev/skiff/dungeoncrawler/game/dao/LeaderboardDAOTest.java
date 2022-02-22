@@ -1,9 +1,11 @@
-package dev.skiff.dungeoncrawler.dao;
+package dev.skiff.dungeoncrawler.game.dao;
 
+import dev.skiff.dungeoncrawler.game.dao.LeaderboardDAO;
 import dev.skiff.dungeoncrawler.model.DungeonRun;
 import dev.skiff.dungeoncrawler.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.sql.SQLException;
@@ -11,6 +13,7 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LeaderboardDAOTest {
+    @Mock
     LeaderboardDAO mockDAO = Mockito.mock(LeaderboardDAO.class);
     ArrayList runList;
 

@@ -1,4 +1,4 @@
-package dev.skiff.dungeoncrawler.dao;
+package dev.skiff.dungeoncrawler.game.dao;
 
 import dev.skiff.dungeoncrawler.model.Monster;
 import dev.skiff.dungeoncrawler.util.APIRequestUtil;

@@ -1,7 +1,9 @@
-package dev.skiff.dungeoncrawler.dao;
+package dev.skiff.dungeoncrawler.game.dao;
 
+import dev.skiff.dungeoncrawler.game.dao.MonsterDAO;
 import dev.skiff.dungeoncrawler.model.Monster;
 import dev.skiff.dungeoncrawler.util.ArrayList;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -19,5 +21,19 @@ public class MonsterDAOTest {
         Mockito.when(mockDao.getAllMonsters()).thenReturn(monsters);
         ArrayList monsterList = mockDao.getAllMonsters();
         assertEquals(monsterList.getArrayItems(), 2);
+    }
+
+    @Test
+    public void monsterCanTakeDamage() {
+        Monster testMonster = new Monster("test", 1, 10);
+        testMonster.takeDamage(5);
+        Assertions.assertEquals(testMonster.getHealth(), 5);
+    }
+
+    @Test
+    public void monsterHealthCannotDropBelowZero() {
+        Monster testMonster = new Monster("test", 1, 10);
+        testMonster.takeDamage(20);
+        Assertions.assertEquals(testMonster.getHealth(), 0);
     }
 }
