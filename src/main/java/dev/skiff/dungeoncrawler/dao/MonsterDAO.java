@@ -45,7 +45,7 @@ public class MonsterDAO {
             try {
                 monsterJSON = APIRequestUtil.parseJSONString(request);
                 float tempDamage = Float.parseFloat("" + monsterJSON.get("challenge_rating"));
-                monsterDamage = Math.max(1, Math.round(tempDamage * 0.5f));
+                monsterDamage = Math.max(1, Math.round(tempDamage));
                 monsterHealth = Integer.parseInt("" + monsterJSON.get("hit_points"));
             } catch (ParseException e) {
                 e.printStackTrace();

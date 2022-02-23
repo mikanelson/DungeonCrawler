@@ -65,6 +65,7 @@ public class Controller {
             e.printStackTrace();
             DungeonCrawler.log.error("Error adding user to leaderboards.", e);
         }
+        System.out.println("You defeated " + score + " monsters.");
         System.out.println("Play again?");
         ArrayList validChoices = new ArrayList();
         validChoices.add("y");
@@ -80,6 +81,7 @@ public class Controller {
             DungeonCrawler.log.info("Player quit game.");
             System.exit(0);
         } else {
+            this.score = 0;
             runGame();
         }
     }
@@ -155,7 +157,7 @@ public class Controller {
         DungeonCrawler.log.info("Player choice: " + choice);
         switch (choice) {
             case 1:
-                p.heal(Math.min(rng.nextInt(100), 15));
+                p.heal(Math.max(rng.nextInt(100), 15));
                 fight();
                 break;
             case 2:
